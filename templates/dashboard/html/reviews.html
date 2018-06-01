@@ -1,0 +1,33 @@
+{% extends "dashboard/html/layout.html" %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-content">
+                    <a href="{{ url_for('dashboard_review_new') }}" class="btn btn-primary">Add Review</a>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="row">
+            {% for item in reviews %}
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-content">
+                        <p class="title">User: {{item.user}}</p>
+                        <p class="category">Order ID: {{item.order_id}}</p>
+                        <p class="category">Review: {{item.text}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ url_for('edit_review_dashboard', id=item.id) }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ url_for('delete_review_dashboard', id=item.id) }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+                <p style="text-align:center"></p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

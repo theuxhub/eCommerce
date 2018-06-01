@@ -1,0 +1,15 @@
+{% extends "template.html" %}
+{% block title %}Reset Password - {% endblock %}
+{% block content %} 
+{% from 'user-macros.html' import render_field %}
+<div class="login-form">
+    <div class="card">
+        <p>Reset Your Password:</p>
+            <form action="" method="post" class="">
+                {{ form.hidden_tag() }} {% for field in form %} {{ render_field(field) }} {% endfor %}
+                <button type="submit" id="Submit" class="btn btn-primary">Send Reset Link</button>
+            </form>
+    </div>
+</div>
+
+{% endblock %}

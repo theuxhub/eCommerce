@@ -1,0 +1,61 @@
+{% extends "template.html" %} 
+{% block title %}Products Suitable For Boys - {% endblock %}
+{% block content %}
+<div class="banner container">
+        <div class="card card-image" style="position:relative">
+            {% for link in links %}
+            <img src="{{link.link}}" alt="" class="mySlides">
+            {% endfor %}
+        </div>
+    </div>
+
+<div class="container">
+    <div class="p__categories">
+        <p style="text-align:right">
+            <a  href="{{url_for('index')}}">All</a>
+            <a class="active">Boys</a>
+            <a  href="{{url_for('girls_products')}}">Girls</a>
+        </p>
+    </div>
+</div>
+
+<div class="products container p-grid">
+    {% for item in products %}
+    <div class="p-grid-item">
+        <a  href="{{ url_for('product_index', name=item.title) }}">
+            <div class="card">
+                <div class="item-price">
+                    <div class="left"></div>
+                    <div class="right">
+                        <p><s>Rs {{item.actual_price}}</s> | {{ item.off_percent }}% OFF</p>
+                        <span>Rs {{ item.buy_price }}</span>
+                    </div>
+                </div>
+                <img src="/product_images?image={{item.image_2}}" alt="{{item.name}}">
+                <div class="product-details">
+                    <p>{{item.name}}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    {% else %}
+        <p style="text-align:center; width: 100%">Sorry! No products found for matching category.</p>
+    {% endfor %}
+</div>
+<script>
+        var slideIndex = 0;
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none"; 
+            }
+            slideIndex++;
+            if (slideIndex > x.length) {slideIndex = 1} 
+            x[slideIndex-1].style.display = "block"; 
+            setTimeout(carousel, 2500); // Change image every 2 seconds
+        }
+</script>
+{% endblock %}

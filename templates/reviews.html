@@ -1,0 +1,16 @@
+{% extends "template.html" %}
+{% block title %}Reviews - {% endblock %}
+{% block content %} 
+<div class="container">
+    {% for item in rev %}
+    <div class="card" style="padding: 15px;">
+        <p class="title">User: {{item.user}}</p>
+        <p class="category">Order ID: {{item.order_id}}</p>
+        <p class="category">Review: {{item.text}}</p>
+    </div>
+    {% else %}
+    <p>No Reivews Yet!</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

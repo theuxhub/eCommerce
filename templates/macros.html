@@ -1,0 +1,24 @@
+{% macro render_field(field) %}
+<div class="field">
+    <div class="form-group label-floating">
+        {% if field.label.text != 'CSRF Token'%} {% if field.type == 'FileField' %}
+        <div class="">
+            {{ field }}
+            <div class="input-group">
+                <input type="text" readonly="" class="form-control" placeholder="{{ field.label.text }}">
+                <span class="input-group-btn input-group-sm">
+                    <button type="button" class="btn btn-fab btn-fab-mini">
+                        <i class="material-icons">attach_file</i>
+                    </button>
+                </span>
+            </div>
+        </div>
+        {% else %}
+        <label for="{{ field.label.text }}" class="control-label">{{ field.label.text }}</label>
+        {{ field(class='form-control') }} {% endif %} {% else %} {{ field(class='') }} {% endif %}
+    </div>
+    {% if field.errors %} {% for error in field.errors %}
+    <div class="text-danger">{{ error }}</div>
+    {% endfor %} {% endif %}
+</div>
+{% endmacro %}

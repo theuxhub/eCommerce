@@ -1,0 +1,33 @@
+{% extends "template.html" %}
+{% block title %}{{ user.full_name }} - {% endblock %}
+{% block content %}
+<div class="cart user-profile container">
+    <p class="title">Welcome! {{ user.full_name }}</p>
+
+    {% for product in products %}
+    <div class="card">
+        <div class="item">
+            <div class="left">
+                <img src="/product_images?image={{product.image_1}}" alt="">
+            </div>
+            <div class="right">
+                <p class="quantity">Order ID: {{ product.buyhistory.order_id }}</p>
+                <p class="quantity">{{ product.name }}</p>
+                <p class="quantity">Quantity : {{ product.buyhistory.product_quantity }}</p>
+                <p class="quantity">Status : {{ product.buyhistory.status }}</p>
+                <p class="quantity">Order on : {{product.buyhistory.buy_time}}</p>
+            </div>
+        </div>
+        <div class="button">
+            {%if product.buyhistory.status == 'Initiated'%}
+            <a class="btn btn-highlight" href="{{url_for('cancel_order', id=product.buyhistory.order_id)}}">Cancel!</a>
+            {%elif product.buyhistory.status == 'Delivered' %}
+            <a class="btn btn-highlight" href="/return">Return!</a>
+            {% elif product.buyhistory.status == 'Canceled'%}
+            <a class="btn btn-highlight" href="#">Canceled!</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

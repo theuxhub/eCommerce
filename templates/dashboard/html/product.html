@@ -1,0 +1,35 @@
+{% extends "dashboard/html/layout.html" %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-content">
+                    <a href="{{ url_for('dashboard_products_new') }}" class="btn btn-primary">Add Product</a>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="row">
+            {% for item in products %}
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header card-chart" data-background-color="">
+                        <img src="/product_images?image={{item.image_1}}" alt="">
+                    </div>
+                    <div class="card-content">
+                        <h4 class="title">{{item.name}}</h4>
+                        <p class="category">₹ {{ (item.actual_price - item.actual_price * ( item.off_percent / 100)) }} <span><s>₹ {{item.actual_price}}</span></s><span class="text-success" style="font-weight: bold"> {{ item.off_percent }} % OFF</span> </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ url_for('dashboard_products_edit', id=item.id) }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ url_for('dashboard_products_delete', id=item.id) }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+                <p style="text-align:center">Sorry! No Products Found. Please Add One!! </p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

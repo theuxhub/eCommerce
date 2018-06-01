@@ -1,0 +1,79 @@
+{% extends "template.html" %} {% block content %}
+{% block title %}{% endblock %}
+{% block meta %}
+<meta name="description" content="Get most trending Sunglasses, Eyeglasses for boys & girls. FREE shipping, Cash on Delivery and 10 Days return only at redgingger.com">
+<!-- Google / Search Engine Tags -->
+<meta itemprop="name" content="RedGingger - Shop for Trending Sunglasses">
+<meta itemprop="description" content="Get most trending Sunglasses, Eyeglasses for boys & girls. FREE shipping, Cash on Delivery and 10 Days return only at redgingger.com">
+<meta itemprop="image" content="https://s3.ap-south-1.amazonaws.com/cdn-red/bne3.jpg">
+
+<!-- Facebook Meta Tags -->
+<meta property="og:url" content="https://redgingger.com">
+<meta property="og:type" content="website">
+<meta property="og:title" content="RedGingger - Shop for Trending Sunglasses">
+<meta property="og:description" content="Get most trending Sunglasses, Eyeglasses for boys & girls. FREE shipping, Cash on Delivery and 10 Days return only at redgingger.com">
+<meta property="og:image" content="https://s3.ap-south-1.amazonaws.com/cdn-red/bne3.jpg">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RedGingger - Shop for Trending Sunglasses">
+<meta name="twitter:description" content="Get most trending Sunglasses, Eyeglasses for boys & girls. FREE shipping, Cash on Delivery and 10 Days return only at redgingger.com">
+{% endblock %}
+<div class="banner container">
+    <div class="card card-image" style="position:relative">
+        {% for link in links %}
+        <img src="{{link.link}}" alt="" class="mySlides">
+        {% endfor %}
+    </div>
+</div>
+
+<div class="container">
+    <div class="p__categories">
+        <p style="text-align:right">
+            <a class="active">All</a>
+            <a  href="{{url_for('boys_products')}}">Boys</a>
+            <a  href="{{url_for('girls_products')}}">Girls</a>
+        </p>
+    </div>
+</div>
+
+<div class="products container p-grid">
+    {% for item in products %}
+    <div class="p-grid-item">
+        <a  href="{{ url_for('product_index', name=item.title) }}">
+            <div class="card">
+                <div class="item-price">
+                    <div class="left"></div>
+                    <div class="right">
+                        <p><s>Rs {{item.actual_price}}</s> | {{ item.off_percent }}% OFF</p>
+                        <span>Rs {{ item.buy_price }}</span>
+                    </div>
+                </div>
+                <img src="/product_images?image={{item.image_2}}" alt="{{item.name}}">
+                <div class="product-details">
+                    <p>{{item.name}}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    {% else %}
+        <p style="text-align:center; width: 100%">Sorry! No products has been added to the website.</p>
+    {% endfor %}
+</div>
+<script>
+        var slideIndex = 0;
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none"; 
+            }
+            slideIndex++;
+            if (slideIndex > x.length) {slideIndex = 1} 
+            x[slideIndex-1].style.display = "block"; 
+            setTimeout(carousel, 2500); // Change image every 2 seconds
+        }
+</script>
+{% endblock %}

@@ -1,0 +1,292 @@
+{% extends "/template.html" %} 
+{% block title %}{{product.name}} - {% endblock %}
+{% block meta %}
+<!-- Google / Search Engine Tags -->
+<meta itemprop="name" content="RedGingger - Shop for Trending Sunglasses">
+<meta itemprop="description" content="Get most trending Sunglasses, Eyeglasses for boys & girls. FREE shipping, Cash on Delivery and 10 Days return only at redgingger.com">
+<meta itemprop="image" content="https://redgingger.com/product_images?image={{product.image_2}}">
+
+
+<meta property="og:type"        content="product" />
+<meta property="og:title"       content="{{product.name}} | RedGingger" />
+<meta property="og:description" content="{{ product.other_details }}" />
+<meta property="og:image"       content="https://redgingger.com/product_images?image={{product.image_2}}" />
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RedGingger - Shop for Trending Sunglasses">
+<meta name="twitter:description" content="Get most trending Sunglasses, Eyeglasses for boys & girls. FREE shipping, Cash on Delivery and 10 Days return only at redgingger.com">
+{% endblock %}
+{% block content %}
+<div class="container product-big-details">
+    <div class="card product">
+        <div class="left">
+            <img src="/product_images?image={{product.image_1}}" alt="{{product.name}}" id="main-image-product">
+            <div class="smallimgs">
+                <img src="/product_images?image={{product.image_1}}" alt="{{product.name}} image 1">
+                <img src="/product_images?image={{product.image_2}}" alt="{{product.name}} image 2">
+                <img src="/product_images?image={{product.image_3}}" alt="{{product.name}} image 3">
+            </div>
+        </div>
+        <div class="right">
+            <h1 class="p-title">{{product.name}}</h1>
+            <p class="cross-price">MRP
+                <s>Rs. {{product.actual_price}}</s>
+            </p>
+            <p class="sell-price">Rs. {{ (product.buy_price) }}
+                <span>{{ product.off_percent }}% OFF</span>
+                <span class="count">
+                    {% if product.count >= 1 %}
+                        Available
+                    {% else %}
+                        Not available
+                    {% endif %}
+                </span>
+            </p>
+            {% if product.color %}
+                <p class="text">
+                <span class="list-circle"></span>Color : {{product.color}}</p>
+            {% endif %}
+            {% if product.size %}
+            <p class="text">
+                <span class="list-circle"></span>Size : {{product.size}}</p>
+            {% endif %}
+            {% if product.brand_name %}
+                <p class="text">
+                    <span class="list-circle"></span>Brand Name : {{product.brand_name}}</p>
+            {% endif %}
+            {% if product.brand_name %}
+                <p class="text">
+                    <span class="list-circle"></span>Lense Color : {{product.lenses_color}}</p>
+            {% endif %}
+            {% if product.brand_name %}
+                <p class="text">
+                    <span class="list-circle"></span>Frame Color : {{product.frame_color}}</p>
+            {% endif %}
+            <!-- {% if product.other_details %}
+            <p class="text other-details">{{ product.other_details}}</p>
+            {% endif %} -->
+            <div class="button-group">
+                {% if product.count >= 1 %}
+                    <a class="btn btn-highlight" href="{{url_for('buy_now', product_id=product.id)}}">Buy Now</a>
+                    <a class="btn btn-dark" href="{{url_for('add_to_cart', product_id=product.id)}}">Add to Cart</a>
+                {% else %}
+                    
+                {% endif %}            
+            </div>
+        </div>
+    </div>
+    <div class="card general_details">
+        <h2>Overview</h2><hr>
+        <h4>Quick Details</h4>
+        <div class="flex-tables">
+            <table>
+                {% if product.brand_name %}
+                <tr>
+                    <td>Brand Name:</td>
+                    <td>{{product.brand_name}}</td>
+                </tr>
+                {% endif %}
+                {% if product.lenses_color %}
+                <tr>
+                    <td>Lense Color:</td>
+                    <td>{{product.lenses_color}}</td>
+                </tr>
+                {% endif %}
+                {% if product.frame_color %}
+                <tr>
+                    <td>Frame Color:</td>
+                    <td>{{product.frame_color}}</td>
+                </tr>
+                {% endif %}
+                {% if product.lenses_material %}
+                <tr>
+                    <td>Lense Material:</td>
+                    <td>{{product.lenses_material}}</td>
+                </tr>
+                {% endif %}
+                {% if product.frame_material %}
+                <tr>
+                    <td>Frame Material:</td>
+                    <td>{{product.frame_material}}</td>
+                </tr>
+                {% endif %}
+                {% if product.ideal_for %}
+                <tr>
+                    <td>Ideal For:</td>
+                    <td>{{product.ideal_for}}</td>
+                </tr>
+                {% endif %}
+            </table>
+            <table>
+                {% if product.usage %}
+                <tr>
+                    <td>Usage:</td>
+                    <td>{{product.usage}}</td>
+                </tr>
+                {% endif %}
+                {% if product.packaging %}
+                <tr>
+                    <td>Packaging:</td>
+                    <td>{{product.packaging}}</td>
+                </tr>
+                {% endif %}
+                {% if product.uv_protection %}
+                <tr>
+                    <td>UV Protection:</td>
+                    <td>{{product.uv_protection}}</td>
+                </tr>
+                {% endif %}
+                {% if product.model_no %}
+                <tr>
+                    <td>Model No:</td>
+                    <td>{{product.model_no}}</td>
+                </tr>
+                {% endif %}
+                {% if product.suitable_for %}
+                <tr>
+                    <td>Suitable For:</td>
+                    <td>{{product.suitable_for}}</td>
+                </tr>
+                {% endif %}
+                {% if product.size %}
+                <tr>
+                    <td>Size:</td>
+                    <td>{{product.size}}</td>
+                </tr>
+                {% endif %}
+            </table>
+            <table>
+                {% if product.typ_e %}
+                <tr>
+                    <td>Type:</td>
+                    <td>{{product.typ_e}}</td>
+                </tr>
+                {% endif %}
+                {% if product.features %}
+                <tr>
+                    <td>Features:</td>
+                    <td>{{product.features}}</td>
+                </tr>
+                {% endif %}
+                {% if product.case_type %}
+                <tr>
+                    <td>Case Type:</td>
+                    <td>{{product.case_type}}</td>
+                </tr>
+                {% endif %}
+                {% if product.dimensions_bridgesize %}
+                <tr>
+                    <td>Bridge Size:</td>
+                    <td>{{product.dimensions_bridgesize}}</td>
+                </tr>
+                {% endif %}
+                {% if product.dimensions_hrizontal_width %}
+                <tr>
+                    <td>Horizontal Width:</td>
+                    <td>{{product.dimensions_hrizontal_width}}</td>
+                </tr>
+                {% endif %}
+                {% if product.dimensions_frame_arm_lenght %}
+                <tr>
+                    <td>Arm Lenght:</td>
+                    <td>{{product.dimensions_frame_arm_lenght}}</td>
+                </tr>
+                {% endif %}
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="container reviews">
+    <div class="card be-social">
+        <p class="bold">WEAR IT AND SHARE IT</p>
+        <p class="social">
+            <a href="https://www.instagram.com/redgingger2018/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/redgingger2018" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/redgingger2018" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+        </p>
+        <p class="tag">#RedGinggerStar</p>
+        <p>Show off on Social Media. Use hash tag #RedGinggerStar</p>
+        <p><a href="#">See Gallery</a></p>
+    </div>
+    <div class="card review--anim">
+        <form action="{{ url_for('add_comment', product_id=product.id) }}" method="POST" class="add-review">
+            <p>Add a review</p>
+            <select id="example" name="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <textarea name="review-text" id="" placeholder="Write your review here"></textarea>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+    {% if comments %}
+    {% for comment in comments %}
+    <div class="card">
+        <p class="user">{{comment.user.email}}</p>
+        <select class="reviewratings---" disabled>
+            {% if comment.rating == 1 %}
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            {% endif %}
+            {% if comment.rating == 2 %}
+            <option value="1">1</option>
+            <option value="2" selected>2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            {% endif %}
+            {% if comment.rating == 3 %}
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3" selected>3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            {% endif %}
+            {% if comment.rating == 4 %}
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4" selected>4</option>
+            <option value="5">5</option>
+            {% endif %}
+            {% if comment.rating == 5 %}
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5" selected>5</option>
+            {% endif %}
+        </select>
+        {% if comment.text %}
+        <blockquote class="review-text">{{comment.text}}</blockquote>
+        {% endif %}
+        <p class="date">{{comment.comment_time}}</p>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+<script>
+    $('#example').barrating({
+        theme: 'fontawesome-stars'
+    });
+    $('.reviewratings---').barrating({
+        theme: 'fontawesome-stars'
+    });
+    $('.reviewratings---').barrating('readonly', true);
+
+
+    $('.product .left .smallimgs img').on('click', function(e) {
+        let attrib = $(this).attr('src');
+        $('#main-image-product').attr('src', attrib);
+    });
+
+</script>
+{% endblock %}

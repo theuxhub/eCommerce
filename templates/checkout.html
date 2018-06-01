@@ -1,0 +1,57 @@
+{% extends "template.html" %} 
+{% block title %}Checkout - {% endblock %}
+{% block content %}
+<div class="checkout container">
+    <div class="card">
+        {% if products %}
+        <div class="left">
+            <p>Enter Your Address</p>
+            <form action="/checkout/" class="form" method="POST">
+                <div class="field">
+                    <input type="text" name="fullname" placeholder="Full Name" required>
+                </div>
+                <div class="field">
+                    <input type="text" name="hostelname" placeholder="Hostel Name / No." required>
+                </div>
+                <div class="field">
+                    <input type="text" name="mobileno" placeholder="Mobile No." required>
+                </div>
+                <hr>
+                <p>Payment Option</p>
+                <div class="field radio">
+                    <input type="radio" name="pay" id="" value="Cash On Delivery" checked required> Cash On Delivery
+                    <p>( Note: You can use Paytm or Tez at shipping. <b><i>Cashless Payment Accepted</i></b> )</p>
+                </div>
+                <hr>
+                <button type="submit" class="btn">Place Your Order</button>
+            </form>
+        </div>
+        <div class="right">
+            <p>Cart Summary</p>
+            <table>
+                <thead>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </thead>
+                <tfoot>
+                    <td colspan="2">Subtotal</td>
+                    <td>Rs. {{totalprice}}</td>
+                </tfoot>
+                <tbody>
+                    {% for product in products %}
+                    <tr>
+                        <td>{{product.name}}</td>
+                        <td>{{product.cart.count}}</td>
+                        <td>Rs. {{product.buy_price}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p style="text-align: center; width: 100%">No Products has been added to you cart. Add Products to Continue.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

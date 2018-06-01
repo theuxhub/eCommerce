@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Decoder Hub">
+    <meta name="twitter:image" content="https://redgingger.com/product_images?image=12th.jpg">
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.ico') }}" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>{% block title %}{% endblock %}The Shop | The Best Shop</title>
+    {% block meta %}{% endblock %}
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <!-- Core CSS     -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='user/css/style.css') }}"/>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+    <noscript id="deferred-styles">
+        <!-- Bootstrap is used only for start ratings -->
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"/>
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons|PT+Sans' rel='stylesheet' type='text/css'>
+    </noscript>
+    <script>
+    var loadDeferredStyles = function() {
+        var addStylesNode = document.getElementById("deferred-styles");
+        var replacement = document.createElement("div");
+        replacement.innerHTML = addStylesNode.textContent;
+        document.body.appendChild(replacement)
+        addStylesNode.parentElement.removeChild(addStylesNode);
+    };
+    var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+        window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+    if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+    else window.addEventListener('load', loadDeferredStyles);
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-113254710-1');
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        !function(t){"function"==typeof define&&define.amd?define(["jquery"],t):"object"==typeof module&&module.exports?module.exports=t(require("jquery")):t(jQuery)}(function(t){var e=function(){function e(){var e=this,n=function(){var n=["br-wrapper"];""!==e.options.theme&&n.push("br-theme-"+e.options.theme),e.$elem.wrap(t("<div />",{"class":n.join(" ")}))},i=function(){e.$elem.unwrap()},a=function(n){return t.isNumeric(n)&&(n=Math.floor(n)),t('option[value="'+n+'"]',e.$elem)},r=function(){var n=e.options.initialRating;return n?a(n):t("option:selected",e.$elem)},o=function(){var n=e.$elem.find('option[value="'+e.options.emptyValue+'"]');return!n.length&&e.options.allowEmpty?(n=t("<option />",{value:e.options.emptyValue}),n.prependTo(e.$elem)):n},l=function(t){var n=e.$elem.data("barrating");return"undefined"!=typeof t?n[t]:n},s=function(t,n){null!==n&&"object"==typeof n?e.$elem.data("barrating",n):e.$elem.data("barrating")[t]=n},u=function(){var t=r(),n=o(),i=t.val(),a=t.data("html")?t.data("html"):t.text(),l=null!==e.options.allowEmpty?e.options.allowEmpty:!!n.length,u=n.length?n.val():null,d=n.length?n.text():null;s(null,{userOptions:e.options,ratingValue:i,ratingText:a,originalRatingValue:i,originalRatingText:a,allowEmpty:l,emptyRatingValue:u,emptyRatingText:d,readOnly:e.options.readonly,ratingMade:!1})},d=function(){e.$elem.removeData("barrating")},c=function(){return l("ratingText")},f=function(){return l("ratingValue")},g=function(){var n=t("<div />",{"class":"br-widget"});return e.$elem.find("option").each(function(){var i,a,r,o;i=t(this).val(),i!==l("emptyRatingValue")&&(a=t(this).text(),r=t(this).data("html"),r&&(a=r),o=t("<a />",{href:"#","data-rating-value":i,"data-rating-text":a,html:e.options.showValues?a:""}),n.append(o))}),e.options.showSelectedRating&&n.append(t("<div />",{text:"","class":"br-current-rating"})),e.options.reverse&&n.addClass("br-reverse"),e.options.readonly&&n.addClass("br-readonly"),n},p=function(){return l("userOptions").reverse?"nextAll":"prevAll"},h=function(t){a(t).prop("selected",!0),l("userOptions").triggerChange&&e.$elem.change()},m=function(){t("option",e.$elem).prop("selected",function(){return this.defaultSelected}),l("userOptions").triggerChange&&e.$elem.change()},v=function(t){t=t?t:c(),t==l("emptyRatingText")&&(t=""),e.options.showSelectedRating&&e.$elem.parent().find(".br-current-rating").text(t)},y=function(t){return Math.round(Math.floor(10*t)/10%1*100)},b=function(){e.$widget.find("a").removeClass(function(t,e){return(e.match(/(^|\s)br-\S+/g)||[]).join(" ")})},w=function(){var n,i,a=e.$widget.find('a[data-rating-value="'+f()+'"]'),r=l("userOptions").initialRating,o=t.isNumeric(f())?f():0,s=y(r);if(b(),a.addClass("br-selected br-current")[p()]().addClass("br-selected"),!l("ratingMade")&&t.isNumeric(r)){if(o>=r||!s)return;n=e.$widget.find("a"),i=a.length?a[l("userOptions").reverse?"prev":"next"]():n[l("userOptions").reverse?"last":"first"](),i.addClass("br-fractional"),i.addClass("br-fractional-"+s)}},$=function(t){return l("allowEmpty")&&l("userOptions").deselectable?f()==t.attr("data-rating-value"):!1},x=function(n){n.on("click.barrating",function(n){var i,a,r=t(this),o=l("userOptions");return n.preventDefault(),i=r.attr("data-rating-value"),a=r.attr("data-rating-text"),$(r)&&(i=l("emptyRatingValue"),a=l("emptyRatingText")),s("ratingValue",i),s("ratingText",a),s("ratingMade",!0),h(i),v(a),w(),o.onSelect.call(e,f(),c(),n),!1})},C=function(e){e.on("mouseenter.barrating",function(){var e=t(this);b(),e.addClass("br-active")[p()]().addClass("br-active"),v(e.attr("data-rating-text"))})},O=function(t){e.$widget.on("mouseleave.barrating blur.barrating",function(){v(),w()})},R=function(e){e.on("touchstart.barrating",function(e){e.preventDefault(),e.stopPropagation(),t(this).click()})},V=function(t){t.on("click.barrating",function(t){t.preventDefault()})},S=function(t){x(t),e.options.hoverState&&(C(t),O(t))},T=function(t){t.off(".barrating")},j=function(t){var n=e.$widget.find("a");l("userOptions").fastClicks&&R(n),t?(T(n),V(n)):S(n)};this.show=function(){l()||(n(),u(),e.$widget=g(),e.$widget.insertAfter(e.$elem),w(),v(),j(e.options.readonly),e.$elem.hide())},this.readonly=function(t){"boolean"==typeof t&&l("readOnly")!=t&&(j(t),s("readOnly",t),e.$widget.toggleClass("br-readonly"))},this.set=function(t){var n=l("userOptions");0!==e.$elem.find('option[value="'+t+'"]').length&&(s("ratingValue",t),s("ratingText",e.$elem.find('option[value="'+t+'"]').text()),s("ratingMade",!0),h(f()),v(c()),w(),n.silent||n.onSelect.call(this,f(),c()))},this.clear=function(){var t=l("userOptions");s("ratingValue",l("originalRatingValue")),s("ratingText",l("originalRatingText")),s("ratingMade",!1),m(),v(c()),w(),t.onClear.call(this,f(),c())},this.destroy=function(){var t=f(),n=c(),a=l("userOptions");T(e.$widget.find("a")),e.$widget.remove(),d(),i(),e.$elem.show(),a.onDestroy.call(this,t,n)}}return e.prototype.init=function(e,n){return this.$elem=t(n),this.options=t.extend({},t.fn.barrating.defaults,e),this.options},e}();t.fn.barrating=function(n,i){return this.each(function(){var a=new e;if(t(this).is("select")||t.error("Sorry, this plugin only works with select fields."),a.hasOwnProperty(n)){if(a.init(i,this),"show"===n)return a.show(i);if(a.$elem.data("barrating"))return a.$widget=t(this).next(".br-widget"),a[n](i)}else{if("object"==typeof n||!n)return i=n,a.init(i,this),a.show();t.error("Method "+n+" does not exist on jQuery.barrating")}})},t.fn.barrating.defaults={theme:"",initialRating:null,allowEmpty:null,emptyValue:"",showValues:!1,showSelectedRating:!0,deselectable:!0,reverse:!1,readonly:!1,fastClicks:!0,hoverState:!0,silent:!1,triggerChange:!0,onSelect:function(t,e,n){},onClear:function(t,e){},onDestroy:function(t,e){}},t.fn.barrating.BarRating=e});
+        //# sourceMappingURL=jquery.barrating.min.js.map
+    </script>
+    <script>
+        $(function() {
+            let alertCloseButton = document.getElementById('delete-info');
+            function close(event) {
+                alertCloseButton.parentElement.parentElement.hidden = true;
+            }
+
+            if (alertCloseButton) {
+                alertCloseButton.addEventListener('click', close);
+                setTimeout(close, 2500);
+            }
+
+            let searchButton = document.getElementById('search__');
+            searchButton.addEventListener('click', function (event) {
+                let header = document.getElementsByClassName('header-content')[0];
+                header.classList.toggle('hidden');
+            });
+
+            let searchclosebutton = document.getElementById('close-searchbar');
+            searchclosebutton.addEventListener('click', function (event) {
+                let header = document.getElementsByClassName('header-content')[0];
+                header.classList.toggle('hidden');
+            });
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/static/sw.js').then(function(registration) {
+                    // Registration was successful :)
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function(err) {
+                    // registration failed :(
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <header class="main-header">
+            {% with messages = get_flashed_messages() %} {% if messages %}
+            <div class="alert alert-info">
+                {% for message in messages %}
+                <div class="container-fluid">
+                    <div class="alert-icon">
+                        <i class="material-icons">info_outline</i>
+                    </div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" id="delete-info">
+                        <span aria-hidden="true">
+                            <i class="material-icons">clear</i>
+                        </span>
+                    </button>
+                    <p id="message-text______">{{ message }}</p> {% endfor %}
+                </div>
+            </div>
+            {% endif %} {% endwith %}
+        <div class="header-top">
+            <div class="left">
+                <p>The Best Shop</p>
+            </div>
+            <div class="right">
+
+            </div>
+        </div>
+        <div class="header-content">
+            <div class="logo">
+                <a href="{{ url_for('index') }}"><?xml version="1.0" encoding="utf-8"?>
+                    The Shop
+                </a>
+            </div>
+            <div class="search-form">
+                <form action="/search">
+                    <input type="text" name="keyword" id="searchtextbox" placeholder="Search for products" {% if query %} value="{{query}}" {%
+                        endif %}>
+                    <button type="submit" id="searchsubmit">Search</button>
+                </form>
+            </div>
+            <div class="icon-nav">
+                <span class="nav-item search" id="search__">
+                    <i class="material-icons">search</i>
+                </span>
+                <a href="{{ url_for('cart_index') }}" class="nav-item">
+                    <span>Cart</span>
+                    <i class="material-icons">&#xE8CC;</i>
+                </a>
+                {% if user.is_authenticated %}
+                <span class="nav-item dropdown">
+                    <a href="#user" class="">
+                        <span>Account</span>
+                        <i class="material-icons">account_circle</i>
+                    </a>
+                    <ul style="width: 149px">
+                        {% if user.is_admin %}
+                        <li>
+                            <a  href="{{ url_for('user_profile') }}">Profile</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                        </li>
+                        <li>
+                            <a  href="{{ url_for('change_password') }}">Change Password</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('logout') }}">LogOut</a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a  href="{{ url_for('user_profile') }}">Profile</a>
+                        </li>
+                        <li>
+                            <a  href="{{ url_for('change_password') }}">Change Password</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('logout') }}">LogOut</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </span>
+                {% else %}
+                <span class="nav-item dropdown">
+                    <a href="#user" class="">
+                        <span>Sign In</span>
+                        <i class="material-icons">&#xE853;</i>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{ url_for('login') }}">Sign In</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('register') }}">Sign Up</a>
+                        </li>
+                    </ul>
+                </span>
+                {% endif %}
+            </div>
+            <div class="search__bar">
+                <form action="/search">
+                    <input type="text" name="keyword" placeholder="Search for products" {% if query %} value="{{query}}" {% endif %}>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" id="close-searchbar">
+                        <span aria-hidden="true">
+                            <i class="material-icons">clear</i>
+                        </span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </header>
+    <div id="barba-wrapper">
+    <div class="content" style="margin: 10px 0">
+        {% block content %} {% endblock %}
+    </div>
+    </div>
+    <footer class="main-footer">
+        <div class="left">
+            Copyright &copy;
+            DecoderHub. All rights reserved | <a href="/about">About Us</a> | <a href="/return">Return Policy</a> | <a href="/contact-us">Contact Us</a>
+        </div>
+        <div class="right">
+            <span> Made with </span>
+            <i class="material-icons">favorite</i>
+            <span> in India.</span>
+        </div>
+    </footer>
+    <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "Organization",
+          "name": "RedGingger",
+          "url": "https://redgingger.com/",
+          "sameAs": [
+            "https://www.facebook.com/redgingger2018",
+            "http://instagram.com/redgingger2018",
+            "http://twitter.com/redgingger2018"
+          ]
+        }
+        </script>
+</body>
+
+</html>

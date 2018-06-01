@@ -1,0 +1,24 @@
+{% extends "dashboard/html/layout.html" %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-content">
+                    <form action="" method="POST">
+                        <input type="text" name="text" id="" class="form-control" placeholder="https://........">
+                        <input type="submit" value="Add" class="btn btn-primary">
+                    </form>
+                    <ol>
+                        {% for link in links%}
+                        <li>
+                            <a href="{{link.link}}">{{link.link}}</a> <a class="btn btn-danger" href="{{url_for('del_dashboard_banner', id=link.id)}}">Delete</a>
+                        </li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "template.html" %} 
+{% block title %}Search - {% endblock %}
+{% block content %}
+<div class="products container p-grid">
+    {% for item in products %}
+    <div class="p-grid-item">
+        <a href="{{ url_for('product_index', name=item.title) }}">
+            <div class="card">
+                <div class="item-price">
+                    <div class="left"></div>
+                    <div class="right">
+                        <p><s>Rs {{item.actual_price}}</s> | {{ item.off_percent }}% OFF</p>
+                        <span>Rs {{ item.buy_price }}</span>
+                    </div>
+                </div>
+                <img src="/product_images?image={{item.image_2}}" alt="">
+                <div class="product-details">
+                    <p>{{item.name}}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    {% else %}
+        <p style="text-align:center; width: 100%">Sorry! No products found!!.</p>
+    {% endfor %}
+</div>
+{% endblock %}
