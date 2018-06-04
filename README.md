@@ -7,9 +7,9 @@ Author: [Nitesh Kumar Niranjan](https://github.com/niteshkumarniranjan)
 ### Features
 
 1. Fully Functional Dashboard
-2. Fully responsive
+2. Fully Responsive
 3. Mail Verifications
-4. Cart mangements
+4. Cart Managements
 5. SEO
 6. More....
 
