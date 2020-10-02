@@ -1,10 +1,10 @@
-## Shopping Web App
+## Shopping Websites App
 
 Author: [Nitesh Kumar Niranjan](https://github.com/niteshkumarniranjan)
 
 *Notice: If your are using this project then please give credit to author*
 
-### Features
+### my features
 
 1. Fully Functional Dashboard
 2. Fully Responsive
